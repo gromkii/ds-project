@@ -4,25 +4,23 @@
 body {
   background-image: url("/images/landing.jpg");
   background-size: cover; }
-  body nav .brand-logo {
-    margin-left: 5px;
+  body nav .navbar-brand {
     font-family: "Cormorant SC", serif;
-    letter-spacing: 1.25px; }
-  body nav form {
-    width: 25%; }
+    font-size: 1.5em; }
   body main {
     height: 90vh;
     text-align: center;
-    margin-top: 10vh;
     color: #d6d6b1; }
     body main .landing {
       background-color: rgba(214, 214, 177, 0); }
     body main h1 {
       font-family: "Cormorant SC", serif;
       letter-spacing: 1.25px;
-      text-shadow: 3px 3px 3px #494331; }
+      text-shadow: 3px 3px 3px #494331;
+      margin-bottom: -10px; }
     body main h2, body main h3, body main h4 {
       font-weight: lighter;
-      text-shadow: 3px 3px 3px #494331; }
+      text-shadow: 3px 3px 3px #494331;
+      margin-bottom: 20px; }
 
 /*# sourceMappingURL=style.css.map */

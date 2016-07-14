@@ -1,4 +1,4 @@
-<html>
+<html ng-app="brewApp">
   <head>
     <meta charset="UTF-8">
 
@@ -10,19 +10,23 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
   </head>
 
-  <body class="container fluid">
-    <main class="row">
-      <section class="col-md-8 col-md-offset-2 landing jumbotron">
-        <h1>Brew Hound</h1>
-        <h2>Find a brew for you.</h2>
-      </section>
-    </main>
+  <body class="container">
+    <!-- Navbar -->
+    <navbar></navbar>
+
+    <ng-view>
+
+    </ng-view>
+
+
 
 
 
     <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-route.js"></script>
     <script src="/javascript/app.js"></script>
 
   </body>
