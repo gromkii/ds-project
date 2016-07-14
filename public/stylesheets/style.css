@@ -5,13 +5,23 @@ body {
   background-image: url("/images/landing.jpg");
   background-size: cover; }
   body nav .brand-logo {
-    font-family: "Cormorant SC", serif; }
+    margin-left: 5px;
+    font-family: "Cormorant SC", serif;
+    letter-spacing: 1.25px; }
+  body nav form {
+    width: 25%; }
   body main {
-    color: #d6d6b1;
-    text-align: center; }
+    height: 90vh;
+    text-align: center;
+    margin-top: 10vh;
+    color: #d6d6b1; }
     body main h1 {
       font-family: "Cormorant SC", serif;
       letter-spacing: 1.25px;
+      text-shadow: 3px 3px 3px #494331; }
+    body main h4 {
+      margin-top: -2.5vh;
+      font-weight: lighter;
       text-shadow: 3px 3px 3px #494331; }
 
 /*# sourceMappingURL=style.css.map */
