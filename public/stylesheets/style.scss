@@ -13,3 +13,27 @@ $color2: rgba(214, 214, 177, 1);
 $color3: rgba(73, 67, 49, 1);
 $color4: rgba(135, 132, 114, 1);
 $color5: rgba(222, 84, 30, 1);
+
+$landing-font: 'Cormorant SC', serif;
+
+body {
+  background-image:url('/images/landing.jpg');
+  background-size:cover;
+
+  nav {
+    .brand-logo {
+      font-family: $landing-font;
+    }
+  }
+
+  main {
+    color:$color2;
+    text-align: center;
+
+    h1 {
+      font-family: $landing-font;
+      letter-spacing: 1.25px;
+      text-shadow: 3px 3px 3px $color3;
+    }
+  }
+}
