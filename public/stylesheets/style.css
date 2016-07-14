@@ -15,12 +15,13 @@ body {
     text-align: center;
     margin-top: 10vh;
     color: #d6d6b1; }
+    body main .landing {
+      background-color: rgba(214, 214, 177, 0); }
     body main h1 {
       font-family: "Cormorant SC", serif;
       letter-spacing: 1.25px;
       text-shadow: 3px 3px 3px #494331; }
-    body main h4 {
-      margin-top: -2.5vh;
+    body main h2, body main h3, body main h4 {
       font-weight: lighter;
       text-shadow: 3px 3px 3px #494331; }
 

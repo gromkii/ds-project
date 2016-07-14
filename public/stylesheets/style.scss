@@ -13,7 +13,7 @@ $color2: rgba(214, 214, 177, 1);
 $color3: rgba(73, 67, 49, 1);
 $color4: rgba(135, 132, 114, 1);
 $color5: rgba(222, 84, 30, 1);
-$color6: rgba(214, 214, 177, .25);
+$color6: rgba(214, 214, 177, 0);
 
 $landing-font: 'Cormorant SC', serif;
 
@@ -37,19 +37,19 @@ body {
     text-align:center;
     margin-top:10vh;
     color:$color2;
+    .landing {
+      background-color:$color6;
+    }
     h1 {
       font-family: $landing-font;
       letter-spacing: 1.25px;
       text-shadow: 3px 3px 3px $color3;
     }
 
-    h4{
-      margin-top:-2.5vh;
+    h2, h3, h4{
       font-weight: lighter;
       text-shadow: 3px 3px 3px $color3;
 
     }
-
-
   }
 }
