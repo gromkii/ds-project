@@ -34,3 +34,7 @@ app.controller("IndexController", function(){
 app.controller("SearchFormController", function(){
   this.greeting = "Greetings another page."
 })
+
+app.controller("ResultsController", ['$http','$routeParams', function($http, $routeParams){
+  
+}])

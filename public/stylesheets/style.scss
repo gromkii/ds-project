@@ -17,6 +17,13 @@ $color6: rgba(214, 214, 177, 0);
 
 $landing-font: 'Cormorant SC', serif;
 
+.title-text {
+  color:$color2;
+  font-family: $landing-font;
+  letter-spacing: 1.25px;
+  text-shadow: 3px 3px 3px $color3;
+}
+
 body {
   background-image:url('/images/landing.jpg');
   background-size:cover;
@@ -48,5 +55,16 @@ body {
     }
 
 
+  }
+
+  section {
+    .search-form {
+      display:flex;
+      flex-direction:column;
+      justify-content: center;
+      form:{
+        margin-top:20px;
+      }
+    }
   }
 }
