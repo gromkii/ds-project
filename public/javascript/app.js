@@ -12,6 +12,12 @@ app.config(($routeProvider,$locationProvider) => {
       templateUrl:'/views/index/search.html',
       controller:'SearchFormController',
       controllerAs:'searchForm'
+    })
+
+    .when('/results',{
+      templateUrl:'/views/index/results.html',
+      controller:'ResultsController',
+      controllerAs:'results'
     });
 
     $locationProvider.html5Mode({
@@ -33,8 +39,26 @@ app.controller("IndexController", function(){
 
 app.controller("SearchFormController", function(){
   this.greeting = "Greetings another page."
-})
+});
 
 app.controller("ResultsController", ['$http','$routeParams', function($http, $routeParams){
-  
-}])
+  this.data =
+    {
+      [{
+        name : 'Brews',
+        beers : [
+          'tasty',
+          'decent',
+          'gross'
+        ],
+        rating: 4.3
+      }, {
+        name: 'Brew 2',
+        beers:[
+          'gross',
+           'worse'
+         ],
+        rating: 2
+    }]
+  };
+}]);
