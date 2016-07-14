@@ -7,7 +7,7 @@ require('locus');
 
 // === Middleware === //
 app.use(bodyParser.json())
-  .use(bodyParser.urlencoded({extend:false}))
+  .use(bodyParser.urlencoded({extended:false}))
   .use(methodOverride('_method'))
   .use(express.static('public'));
 
