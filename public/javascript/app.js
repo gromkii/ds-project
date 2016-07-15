@@ -1,4 +1,4 @@
-var app = angular.module('brewApp', ['ngRoute']);
+var app = angular.module('brewApp', ['ngRoute', 'ngAnimate']);
 
 app.config(($routeProvider,$locationProvider) => {
   $routeProvider
@@ -42,23 +42,67 @@ app.controller("SearchFormController", function(){
 });
 
 app.controller("ResultsController", ['$http','$routeParams', function($http, $routeParams){
-  this.data =
+  var store = this;
+
+  this.data = [
     {
-      [{
-        name : 'Brews',
-        beers : [
-          'tasty',
-          'decent',
-          'gross'
-        ],
-        rating: 4.3
-      }, {
-        name: 'Brew 2',
-        beers:[
-          'gross',
-           'worse'
-         ],
-        rating: 2
-    }]
-  };
+      name : 'Brews',
+      collapse: false,
+
+      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
+
+      beers : [
+        {name:'tasty', img:'http://placecage.com/150/150'},
+        {name:'decent', img:'http://fillmurray.com/150/150'},
+        {name:'gross', img:'http://stevensegallery.com/150/150'}
+      ],
+      rating: 4.3
+    },
+    {
+      name: 'Brew 2',
+      collapse: true,
+
+      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
+
+      beers:[
+        {name:'gross'},
+         {name:'worse'}
+       ],
+      rating: 2
+    },
+    {
+      name : 'Brews',
+      collapse: false,
+
+      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
+
+      beers : [
+        {name:'tasty', img:'http://placecage.com/150/150'},
+        {name:'decent', img:'http://fillmurray.com/150/150'},
+        {name:'gross', img:'http://stevensegallery.com/150/150'}
+      ],
+      rating: 4.3
+    },
+    {
+      name : 'Brews',
+      collapse: false,
+
+      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
+
+      beers : [
+        {name:'tasty', img:'http://placecage.com/150/150'},
+        {name:'decent', img:'http://fillmurray.com/150/150'},
+        {name:'gross', img:'http://stevensegallery.com/150/150'}
+      ],
+      rating: 4.3
+    }
+  ];
+
+  this.expand = function(brew){
+    if (brew.collapse === true){
+      brew.collapse = false;
+    } else {
+      brew.collapse = true;
+    }
+  }
 }]);

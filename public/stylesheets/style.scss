@@ -14,6 +14,8 @@ $color3: rgba(73, 67, 49, 1);
 $color4: rgba(135, 132, 114, 1);
 $color5: rgba(222, 84, 30, 1);
 $color6: rgba(214, 214, 177, 0);
+$color7: rgba(214, 214, 177, .5);
+$color8: rgba(214, 214, 177, .75);
 
 $landing-font: 'Cormorant SC', serif;
 
@@ -40,24 +42,28 @@ body {
     color:$color2;
     .landing {
       background-color:$color6;
-    }
-    h1 {
-      font-family: $landing-font;
-      letter-spacing: 1.25px;
-      text-shadow: 3px 3px 3px $color3;
-      margin-bottom: -10px;
-    }
+      h1 {
+        font-family: $landing-font;
+        letter-spacing: 1.25px;
+        text-shadow: 3px 3px 3px $color3;
+        margin-bottom: -10px;
+      }
 
-    h2, h3, h4{
-      font-weight: lighter;
-      text-shadow: 3px 3px 3px $color3;
-      margin-bottom:20px;
+      h2, h3, h4{
+        font-weight: lighter;
+        text-shadow: 3px 3px 3px $color3;
+        margin-bottom:20px;
+      }
     }
 
 
   }
 
   section {
+
+    height:90vh;
+    overflow:scroll;
+
     .search-form {
       display:flex;
       flex-direction:column;
@@ -66,5 +72,50 @@ body {
         margin-top:20px;
       }
     }
+    .brewery {
+      margin-top:15px;
+      padding:5px 10px;
+      background-color:$color7;
+      text-align:left;
+      margin-bottom:5px;
+      border-radius:15px;
+      transition: all 500ms ease;
+      color:$color1;
+      overflow: scroll;
+
+
+      h2 {
+        @extend .title-text;
+      }
+
+      &:hover {
+
+        background-color:$color8;
+      }
+
+      .rating {
+        color:$color2;
+      }
+    }
+
+    .mapping {
+      margin-top:15px;
+      height:90%;
+      background-image:url('http://stevensegallery.com/300/300');
+      background-size: cover;
+    }
+
+
   }
+}
+
+
+.animate-enter {
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+	opacity: 1;
 }

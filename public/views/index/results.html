@@ -1,7 +1,37 @@
 <main class="row">
-  <section class="results col-md-10 col-md-offset-1">
+  <section class="col-md-6">
+    <div class="brewery" ng-repeat="brew in results.data">
+      <div ng-click="results.expand(brew)">
+        <h2>{{ brew.name }}</h2>
 
-  
+        <p> {{ brew.description }} </p>
 
+        <div ng-hide="brew.collapse">
+        <div class="col-md-6">
+          <h4>Beers</h4>
+          <ul>
+            <li ng-repeat="beer in brew.beers">
+              {{ beer.name }}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <img src="http://fillmurray.com/150/150" class="img-circle">
+        </div>
+        </div>
+
+        <h4>Rating: <span class="rating">{{ brew.rating }}</span></h4>
+      </div>
+    </div>
   </section>
+
+  <section class="col-md-6" ng-show="results.data.length">
+    <div class="mapping" id="map">
+    </div>
+  </section>
+
+  <section ng-hide="results.data.length">
+    <h1>No results found, bummer!</h1>
+
+    <a href="/search" class="btn btn-lg btn-primary">Try again?</a>
 </main>

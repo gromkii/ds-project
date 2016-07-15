@@ -1,7 +1,7 @@
 /* Coolors Exported Palette - coolors.co/3f3f37-d6d6b1-494331-878472-de541e */
 /* HSL */
 /* RGB */
-.title-text {
+.title-text, body section .brewery h2 {
   color: #d6d6b1;
   font-family: "Cormorant SC", serif;
   letter-spacing: 1.25px;
@@ -19,19 +19,50 @@ body {
     color: #d6d6b1; }
     body main .landing {
       background-color: rgba(214, 214, 177, 0); }
-    body main h1 {
-      font-family: "Cormorant SC", serif;
-      letter-spacing: 1.25px;
-      text-shadow: 3px 3px 3px #494331;
-      margin-bottom: -10px; }
-    body main h2, body main h3, body main h4 {
-      font-weight: lighter;
-      text-shadow: 3px 3px 3px #494331;
-      margin-bottom: 20px; }
-  body section .search-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    form-margin-top: 20px; }
+      body main .landing h1 {
+        font-family: "Cormorant SC", serif;
+        letter-spacing: 1.25px;
+        text-shadow: 3px 3px 3px #494331;
+        margin-bottom: -10px; }
+      body main .landing h2, body main .landing h3, body main .landing h4 {
+        font-weight: lighter;
+        text-shadow: 3px 3px 3px #494331;
+        margin-bottom: 20px; }
+  body section {
+    height: 90vh;
+    overflow: scroll; }
+    body section .search-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      form-margin-top: 20px; }
+    body section .brewery {
+      margin-top: 15px;
+      padding: 5px 10px;
+      background-color: rgba(214, 214, 177, 0.5);
+      text-align: left;
+      margin-bottom: 5px;
+      border-radius: 15px;
+      transition: all 500ms ease;
+      color: #3f3f37;
+      overflow: scroll; }
+      body section .brewery:hover {
+        background-color: rgba(214, 214, 177, 0.75); }
+      body section .brewery .rating {
+        color: #d6d6b1; }
+    body section .mapping {
+      margin-top: 15px;
+      height: 90%;
+      background-image: url("http://stevensegallery.com/300/300");
+      background-size: cover; }
+
+.animate-enter {
+  -webkit-transition: 1s linear all;
+  /* Chrome */
+  transition: 1s linear all;
+  opacity: 0; }
+
+.animate-enter.animate-enter-active {
+  opacity: 1; }
 
 /*# sourceMappingURL=style.css.map */
