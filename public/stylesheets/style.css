@@ -42,7 +42,7 @@ body {
       background-color: rgba(214, 214, 177, 0.5);
       text-align: left;
       margin-bottom: 5px;
-      border-radius: 15px;
+      border-radius: 3px;
       transition: all 500ms ease;
       color: #3f3f37;
       overflow: scroll; }

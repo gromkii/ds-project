@@ -1,3 +1,5 @@
+
+
 <main class="row">
   <section class="col-md-6">
     <div class="brewery" ng-repeat="brew in results.data">
@@ -26,7 +28,7 @@
   </section>
 
   <section class="col-md-6" ng-show="results.data.length">
-    <div class="mapping" id="map">
+    <div class="mapping" id=" ">
     </div>
   </section>
 
@@ -35,3 +37,6 @@
 
     <a href="/search" class="btn btn-lg btn-primary">Try again?</a>
 </main>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq69SRUlY2WfmaexPKPqcxNEo7ThFqedA&libraries=places"></script>
+<script src="/javascript/map.js"></script>
