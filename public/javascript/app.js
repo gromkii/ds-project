@@ -106,6 +106,7 @@ app.controller("ResultsController", ['$http','$routeParams', function($http, $ro
     }
   }
 
+  console.log($routeParams);
   // $http({
   //   method:'GET',
   //   url:`http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${$routeParams.body.locationOnly}`
