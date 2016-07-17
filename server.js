@@ -13,6 +13,10 @@ app.use(bodyParser.json())
 
 // === Routes === //
 
+app.get('/results', (req, res) => {
+  eval(locus);
+});
+
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/public/views/index.html')
 });
