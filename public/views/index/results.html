@@ -2,13 +2,13 @@
 
 <main class="row">
   <section class="col-md-6">
-    <div class="brewery" ng-repeat="brew in results.data">
-      <div ng-click="results.expand(brew)">
+    <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
+      <div>
         <h2>{{ brew.name }}</h2>
 
         <p> {{ brew.description }} </p>
 
-        <div ng-hide="brew.collapse">
+        <div>
         <div class="col-md-6">
           <h4>Beers</h4>
           <ul>
@@ -22,17 +22,17 @@
         </div>
         </div>
 
-        <h4>Rating: <span class="rating">{{ brew.rating }}</span></h4>
+        <h4>Rating: <span class="rating">{{ brew.rating | number:2}}</span></h4>
       </div>
     </div>
   </section>
 
   <section class="col-md-6" ng-show="results.data.length">
-    <div class="mapping" id=" ">
+    <div class="mapping" id="map">
     </div>
   </section>
 
-  <section ng-hide="results.data.length">
+  <section ng-hide="results.found">
     <h1>No results found, bummer!</h1>
 
     <a href="/search" class="btn btn-lg btn-primary">Try again?</a>

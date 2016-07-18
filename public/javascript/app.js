@@ -26,7 +26,7 @@ app.config(($routeProvider,$locationProvider) => {
     });
 })
 
-app.directive('navbar',function(){
+app.directive('navbar',['Locations', function(Locations){
   return {
     restrict:'E',
     templateUrl:'/views/partials/navbar.html',
@@ -34,11 +34,13 @@ app.directive('navbar',function(){
       console.log();
       var store = this;
       this.submit = function(){
-        console.log(store.form);
+        Locations.locationsOnly(form.locationOnly).success(function(results){
+          console.log(results);
+        })
       }
     }
   }
-})
+}]);
 
 app.controller("IndexController", function(){
   this.greeting = "Connection test.";
@@ -50,60 +52,23 @@ app.controller("SearchFormController", function(){
 
 app.controller("ResultsController", ['$http','$routeParams', function($http, $routeParams){
   var store = this;
+  this.found = true;
 
-  this.data = [
-    {
-      name : 'Brews',
-      collapse: false,
-
-      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
-
-      beers : [
-        {name:'tasty', img:'http://placecage.com/150/150'},
-        {name:'decent', img:'http://fillmurray.com/150/150'},
-        {name:'gross', img:'http://stevensegallery.com/150/150'}
-      ],
-      rating: 4.3
-    },
-    {
-      name: 'Brew 2',
-      collapse: true,
-
-      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
-
-      beers:[
-        {name:'gross'},
-         {name:'worse'}
-       ],
-      rating: 2
-    },
-    {
-      name : 'Brews',
-      collapse: false,
-
-      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
-
-      beers : [
-        {name:'tasty', img:'http://placecage.com/150/150'},
-        {name:'decent', img:'http://fillmurray.com/150/150'},
-        {name:'gross', img:'http://stevensegallery.com/150/150'}
-      ],
-      rating: 4.3
-    },
-    {
-      name : 'Brews',
-      collapse: false,
-
-      description:'Put it this way, it took me twenty five years to get these plants, twenty five years of blood sweat and tears, and I’m never giving up, I’m just getting started. Let me be clear, you have to make it through the jungle to make it to paradise, that’s the key, Lion! Congratulations, you played yourself.',
-
-      beers : [
-        {name:'tasty', img:'http://placecage.com/150/150'},
-        {name:'decent', img:'http://fillmurray.com/150/150'},
-        {name:'gross', img:'http://stevensegallery.com/150/150'}
-      ],
-      rating: 4.3
-    }
-  ];
+  if ($routeParams){
+    $http({
+      method:'GET',
+      url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${$routeParams.locationOnly}`
+    }).then(function(results){
+      if (results.data.brewery_results){
+        store.found = true;
+        store.data = results.data.brewery_results;
+      } else {
+        this.found = false;
+      }
+    });
+  } else {
+    this.found = false;
+  }
 
   this.expand = function(brew){
     if (brew.collapse === true){
@@ -112,14 +77,16 @@ app.controller("ResultsController", ['$http','$routeParams', function($http, $ro
       brew.collapse = true;
     }
   }
+}]);
 
-  console.log($routeParams);
-  if ($routeParams){
-    $http({
-      method:'GET',
-      url:`http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${$routeParams.locationOnly}`
-    }).then(function(results){
-      console.log(results.data);
-    });
+app.factory('Locations', ['$http', function($http){
+  return {
+    locationsOnly: function(zipCode){
+      return $http({
+        method:'GET',
+        url:`http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
+      });
+    }
+
   }
 }]);
