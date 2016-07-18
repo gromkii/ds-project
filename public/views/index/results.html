@@ -4,6 +4,7 @@
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
       <div>
         <h2>{{ brew.name }}</h2>
+        <h2>{{ brew.brewery}}</h2>
         <h4>{{ brew.phone }}</h4>
 
         <p> {{ brew.description }} </p>
@@ -13,7 +14,7 @@
             <h4>Beers</h4>
             <ul>
               <li ng-repeat="beer in brew.beers">
-                {{ beer.name }}
+                {{ beer.beer_name }}
               </li>
             </ul>
           </div>
@@ -22,7 +23,7 @@
           </div>
         </div>
 
-        <div ng-hide="brew.rating.overall === '0'">
+        <div ng-hide="brew.rating.overall === '0' || !brew.rating">
           <h5 >Overall: <span class="rating">{{ brew.rating.overall | number:2}}</span></h5>
           <h5 >Atmosphere: <span class="rating">{{ brew.rating.atmosphere | number:2}}</span></h5>
           <h5 >Selection: <span class="rating">{{ brew.rating.selection | number:2}}</span></h5>

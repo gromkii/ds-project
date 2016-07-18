@@ -17,6 +17,10 @@ app.options('*', cors());
 
 // === Routes === //
 
+app.post('*', (req, res) => {
+  res.sendFile(__dirname + '/public/views/index.html');
+})
+
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/public/views/index.html')
 });

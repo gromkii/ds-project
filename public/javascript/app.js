@@ -59,9 +59,8 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
   var store = this;
   this.found = true;
 
-  if ($routeParams){
+  if (!$routeParams.beer1){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
-    console.log($routeParams);
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
       if (results.brewery_results){
         store.found = true;
@@ -71,8 +70,16 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
         this.found = false;
       }
     });
-  } else {
-    this.found = false;
+  } else if ($routeParams.beer1){
+    Locations.locationAndBeer($routeParams).success(function(results){
+      console.log(results.response);
+      if (results.response){
+        store.data = results.response;
+        Locations.showMap(store.data[0].long, store.data[0].lat);
+      } else {
+        this.found = false;
+      }
+    });
   }
 
   this.expand = function(brew){
@@ -96,6 +103,12 @@ app.factory('Locations', ['$http', function($http){
         url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
       });
     },
+    locationAndBeer: function(form){
+      return $http({
+        method:'GET',
+        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
+      });
+    },
     showMap:function(longi, lati){
       mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
 
@@ -117,3 +130,6 @@ app.factory('Locations', ['$http', function($http){
 
   }
 }]);
+
+
+// jQuery Shit
