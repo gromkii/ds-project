@@ -1,4 +1,4 @@
-/* Coolors Exported Palette - coolors.co/3f3f37-d6d6b1-494331-878472-de541e */
+ /* Coolors Exported Palette - coolors.co/3f3f37-d6d6b1-494331-878472-de541e */
 
 /* HSL */
 $color1: hsla(60%, 7%, 23%, 1);
@@ -112,15 +112,6 @@ body {
       }
     }
 
-    .mapping {
-      margin-top:15px;
-      height:50%;
-      display:flex;
-      align-items: center;
-      background-image:url('http://stevensegallery.com/300/300');
-      background-size: cover;
-    }
-
 
   }
 }
@@ -150,11 +141,4 @@ body {
     left: ($base-line-height / 2);
     animation-delay: ($pulse-duration / 1.5);
   }
-}
-
-#map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
 }

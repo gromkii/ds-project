@@ -61,7 +61,7 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
 
   if ($routeParams){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
-
+    console.log($routeParams);
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
       if (results.brewery_results){
         store.found = true;
@@ -107,6 +107,12 @@ app.factory('Locations', ['$http', function($http){
       });
 
       return map;
+    },
+    showPoints:function(resultsArray){
+      // Loop through resultsArray
+        // Use each longitutde and latitude to make a new point on the map.
+
+      // Return the collection of points to place.
     }
 
   }
