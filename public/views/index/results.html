@@ -8,18 +8,18 @@
 
         <p> {{ brew.description }} </p>
 
-        <div>
-        <div class="col-md-6">
-          <h4>Beers</h4>
-          <ul>
-            <li ng-repeat="beer in brew.beers">
-              {{ beer.name }}
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <img src="http://fillmurray.com/150/150" class="img-circle">
-        </div>
+        <div ng-show="brew.beers.length">
+          <div class="col-md-6">
+            <h4>Beers</h4>
+            <ul>
+              <li ng-repeat="beer in brew.beers">
+                {{ beer.name }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <img src="http://fillmurray.com/150/150" class="img-circle">
+          </div>
         </div>
 
         <h4>Rating: <span class="rating">{{ brew.rating | number:2}}</span></h4>
