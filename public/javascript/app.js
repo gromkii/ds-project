@@ -63,11 +63,10 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
 
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
-      console.log(results.brewery_results);
-
       if (results.brewery_results){
         store.found = true;
         store.data = results.brewery_results;
+        Locations.showMap(store.data[0].location.lon, store.data[0].location.lat);
       } else {
         this.found = false;
       }
@@ -96,6 +95,18 @@ app.factory('Locations', ['$http', function($http){
         },
         url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
       });
+    },
+    showMap:function(longi, lati){
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
+
+      var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/basic-v9',
+          zoom: 13,
+          center: [longi, lati]
+      });
+
+      return map;
     }
 
   }

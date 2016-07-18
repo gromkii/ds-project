@@ -56,8 +56,9 @@ body {
         color: #d6d6b1; }
     body section .mapping {
       margin-top: 15px;
-      height: 400px;
-      width: 400px;
+      height: 50%;
+      display: flex;
+      align-items: center;
       background-image: url("http://stevensegallery.com/300/300");
       background-size: cover; }
 
@@ -83,5 +84,11 @@ body {
   .loading-pulse:after {
     left: 12px;
     animation-delay: 500ms; }
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

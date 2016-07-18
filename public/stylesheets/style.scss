@@ -114,8 +114,9 @@ body {
 
     .mapping {
       margin-top:15px;
-      height:400px;
-      width:400px;
+      height:50%;
+      display:flex;
+      align-items: center;
       background-image:url('http://stevensegallery.com/300/300');
       background-size: cover;
     }
@@ -149,4 +150,11 @@ body {
     left: ($base-line-height / 2);
     animation-delay: ($pulse-duration / 1.5);
   }
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
 }
