@@ -1,7 +1,7 @@
 
 
 <main class="row">
-  <section class="col-md-6">
+  <section class="col-md-6" ng-show="results.data.length && results.found">
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
       <div>
         <h2>{{ brew.name }}</h2>
@@ -36,7 +36,9 @@
     <h1>No results found, bummer!</h1>
 
     <a href="/search" class="btn btn-lg btn-primary">Try again?</a>
-</main>
+  </section>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq69SRUlY2WfmaexPKPqcxNEo7ThFqedA&libraries=places"></script>
-<script src="/javascript/map.js"></script>
+  <section ng-hide="results.data.length">
+    <h1>Searching... hang tight for a sec!</h1>
+  </section>
+</main>

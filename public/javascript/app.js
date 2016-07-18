@@ -55,6 +55,8 @@ app.controller("ResultsController", ['$http','$routeParams', function($http, $ro
   this.found = true;
 
   if ($routeParams){
+    // TODO: make this call without using cors-anywhere. It's hacky and bad.
+
     $http({
       method:'GET',
       url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${$routeParams.locationOnly}`
