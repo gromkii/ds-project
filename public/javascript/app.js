@@ -34,9 +34,7 @@ app.directive('navbar',['Locations', function(Locations){
       console.log();
       var store = this;
       this.submit = function(){
-        Locations.locationsOnly(form.locationOnly).success(function(results){
-          console.log(results);
-        })
+        // Doesn't really need shit rn.
       }
     }
   }
@@ -47,20 +45,22 @@ app.controller("IndexController", function(){
 });
 
 app.controller("SearchFormController", function(){
-  this.greeting = "Greetings another page."
+  this.form = {
+    city: '',
+    beer1: '',
+    beer2: '',
+    beer3: ''
+  }
 });
 
-app.controller("ResultsController", ['$http','$routeParams', function($http, $routeParams){
+app.controller("ResultsController", ['$http','$routeParams', 'Locations', function($http, $routeParams, Locations){
   var store = this;
   this.found = true;
 
   if ($routeParams){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
 
-    $http({
-      method:'GET',
-      url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${$routeParams.locationOnly}`
-    }).then(function(results){
+    Locations.locationOnly($routeParams.locationOnly).success(function(results){
       if (results.data.brewery_results){
         store.found = true;
         store.data = results.data.brewery_results;
@@ -83,10 +83,14 @@ app.controller("ResultsController", ['$http','$routeParams', function($http, $ro
 
 app.factory('Locations', ['$http', function($http){
   return {
-    locationsOnly: function(zipCode){
+    locationOnly: function(zipCode){
       return $http({
         method:'GET',
-        url:`http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
+        },
+        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
       });
     }
 

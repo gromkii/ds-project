@@ -1,18 +1,18 @@
 <section class="row search-form">
   <h1 class="text-center title-text">Search for Breweries</h1>
 
-  <form class="col-md-4 col-md-offset-4" action="/results" method="POST">
+  <form class="col-md-4 col-md-offset-4" action="/results" method="POST" ng-model="form">
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Search by City/Zip">
+      <input type="text" class="form-control" placeholder="Search by City/Zip" name="city">
     </fieldset>
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Beer 1">
+      <input type="text" class="form-control" placeholder="Beer 1" name="beer1">
     </fieldset>
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Beer 2">
+      <input type="text" class="form-control" placeholder="Beer 2" name="beer2">
     </fieldset>
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Beer 3">
+      <input type="text" class="form-control" placeholder="Beer 3" name="beer3">
     </fieldset>
 
     <button type="submit" class="btn btn-lg btn-primary">Search</button>

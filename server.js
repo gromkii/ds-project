@@ -11,12 +11,9 @@ app.use(bodyParser.json())
   .use(methodOverride('_method'))
   .use(express.static('public'));
 
-// === Routes === //
+  
 
-app.post('/results', (req, res) => {
-  // eval(locus);
-  res.sendFile(__dirname + '/public/views/index.html')
-})
+// === Routes === //
 
 app.get('*', (req, res) => {
   res.sendFile(__dirname + '/public/views/index.html')
