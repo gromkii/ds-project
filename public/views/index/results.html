@@ -5,6 +5,7 @@
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
       <div>
         <h2>{{ brew.name }}</h2>
+        <h4>{{ brew.phone }}</h4>
 
         <p> {{ brew.description }} </p>
 
@@ -22,13 +23,19 @@
           </div>
         </div>
 
-        <h4>Rating: <span class="rating">{{ brew.rating | number:2}}</span></h4>
+        <div ng-hide="brew.rating.overall === '0'">
+          <h5 >Overall: <span class="rating">{{ brew.rating.overall | number:2}}</span></h5>
+          <h5 >Atmosphere: <span class="rating">{{ brew.rating.atmosphere | number:2}}</span></h5>
+          <h5 >Selection: <span class="rating">{{ brew.rating.selection | number:2}}</span></h5>
+          <h5 >Service: <span class="rating">{{ brew.rating.service | number:2}}</span></h5>
+          <h5 >Food: <span class="rating">{{ brew.rating.food | number:2}}</span></h5>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="col-md-6" ng-show="results.data.length">
-    <div class="mapping" id="map">
+    <div class="mapboxgl-map" id="map">
     </div>
   </section>
 
@@ -40,6 +47,5 @@
 
   <section ng-hide="results.data.length">
     <h1>Searching... hang tight for a sec!</h1>
-    <div class="loading-pulse">
   </section>
 </main>

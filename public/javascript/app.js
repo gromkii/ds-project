@@ -1,6 +1,6 @@
 var app = angular.module('brewApp', ['ngRoute', 'ngAnimate']);
 
-app.config(($routeProvider,$locationProvider) => {
+app.config(($routeProvider,$locationProvider, $httpProvider) => {
   $routeProvider
     .when('/', {
       templateUrl:'/views/index/index.html',
@@ -24,6 +24,8 @@ app.config(($routeProvider,$locationProvider) => {
       enabled: true,
       requireBase: false
     });
+
+    $httpProvider.defaults.useXDomain
 })
 
 app.directive('navbar',['Locations', function(Locations){
@@ -61,9 +63,11 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
 
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
-      if (results.data.brewery_results){
+      console.log(results.brewery_results);
+
+      if (results.brewery_results){
         store.found = true;
-        store.data = results.data.brewery_results;
+        store.data = results.brewery_results;
       } else {
         this.found = false;
       }

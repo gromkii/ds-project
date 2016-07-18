@@ -1,17 +1,19 @@
 var express        = require('express'),
     app            = express(),
+    cors           = require('cors'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override');
 
 require('locus');
 
 // === Middleware === //
-app.use(bodyParser.json())
+app.use(cors())
+  .use(bodyParser.json())
   .use(bodyParser.urlencoded({extended:false}))
   .use(methodOverride('_method'))
   .use(express.static('public'));
 
-  
+app.options('*', cors());
 
 // === Routes === //
 
