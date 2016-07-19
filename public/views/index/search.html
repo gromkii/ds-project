@@ -7,6 +7,9 @@
     </fieldset>
     <fieldset class="form-group">
       <input type="text" class="form-control" placeholder="Beer 1" name="beer1" id="beer1" value="test" ng-model="beer1">
+      <div class="panel-footer" ng-repeat="beer in search.autoFill.beers | limitTo:10">
+        {{ beer }}
+      </div>
     </fieldset>
     <fieldset class="form-group">
       <input type="text" class="form-control" placeholder="Beer 2" name="beer2" id="beer2">

@@ -55,7 +55,6 @@ app.controller("SearchFormController", function(){
         }
       }).then(function(results){
         store.autoFill.beers = results.response;
-        console.log(store.autoFill.beers);
       })
     },
     minLength:3
