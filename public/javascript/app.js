@@ -33,11 +33,7 @@ app.directive('navbar',['Locations', function(Locations){
     restrict:'E',
     templateUrl:'/views/partials/navbar.html',
     controller: function($routeParams){
-      console.log();
       var store = this;
-      this.submit = function(){
-        // Doesn't really need shit rn.
-      }
     }
   }
 }]);
@@ -134,3 +130,19 @@ app.factory('Locations', ['$http', function($http){
 
 
 // jQuery Shit
+$( '#beer1').autocomplete({
+    source: function (request, response) {
+        $.ajax({
+            type: 'GET',
+            url:  `http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete`,
+            dataType: "json",
+            data: {
+              q: request.term
+            },
+            success: function (data) {
+                console.log(data);
+                response(data);
+            }
+        });
+    }
+});
