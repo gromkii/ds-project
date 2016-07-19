@@ -46,35 +46,7 @@ app.controller("SearchFormController", function(){
   var store = this;
   this.autoFill = [];
 
-  $('#beer1').autocomplete({
-    source: function(req, res){
-      $.getJSON({
-        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
-        function(data){
-          res(data);
-        }
-      }).then(function(results){
-        store.autoFill.beers = results.response;
-        console.log(store.autoFill.beers);
-      })
-    },
-    minLength:3
-  });
-  $('#beer2').autocomplete({
-    source: function(req, res){
-      $.getJSON({
-        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
-        function(data){
-          res(data);
-        }
-      }).then(function(results){
-        store.autoFill.beers = results.response;
-        console.log(store.autoFill.beers);
-      })
-    },
-    minLength:3
-  });
-  $('#beer3').autocomplete({
+  $('#beer1,#beer2,#beer3').autocomplete({
     source: function(req, res){
       $.getJSON({
         url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
