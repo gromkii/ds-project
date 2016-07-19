@@ -10,16 +10,19 @@
         <p> {{ brew.description }} </p>
 
         <div ng-show="brew.beers.length">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <h4>Beers</h4>
             <ul>
               <li ng-repeat="beer in brew.beers">
-                {{ beer.beer_name }}
+                <h5 ng-click="expand(brew.beers)">{{ beer.beer_name }}</h5>
+                  <ul>
+                    <li>Style:{{ beer.style }}</li>
+                    <li>Category: {{ beer.category }}</li>
+                    <li>ABV: {{ beer.abv }}%</li>
+                    <li>IBUS: {{ beer.ibus }}</li>
+                </ul>
               </li>
             </ul>
-          </div>
-          <div class="col-md-6">
-            <img src="http://fillmurray.com/150/150" class="img-circle">
           </div>
         </div>
 

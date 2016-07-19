@@ -75,6 +75,7 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
       console.log(results.response);
       if (results.response){
         store.data = results.response;
+        console.log(store.data.length);
         Locations.showMap(store.data[0].long, store.data[0].lat);
       } else {
         this.found = false;

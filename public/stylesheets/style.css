@@ -43,15 +43,15 @@ body {
     body section .brewery {
       margin-top: 15px;
       padding: 5px 10px;
-      background-color: rgba(214, 214, 177, 0.5);
+      background-color: rgba(135, 132, 114, 0.5);
       text-align: left;
       margin-bottom: 5px;
       border-radius: 3px;
       transition: all 500ms ease;
-      color: #3f3f37;
+      color: #d6d6b1;
       overflow: scroll; }
       body section .brewery:hover {
-        background-color: rgba(214, 214, 177, 0.75); }
+        background-color: rgba(135, 132, 114, 0.75); }
       body section .brewery .rating {
         color: #d6d6b1; }
 
