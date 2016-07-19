@@ -11,7 +11,7 @@ app.config(($routeProvider,$locationProvider, $httpProvider) => {
     .when('/search',{
       templateUrl:'/views/index/search.html',
       controller:'SearchFormController',
-      controllerAs:'searchForm'
+      controllerAs:'search'
     })
 
     .when('/results',{
@@ -49,6 +49,22 @@ app.controller("SearchFormController", function(){
     beer2: '',
     beer3: ''
   }
+  var store = this;
+
+  $('#beer1').autocomplete({
+    source: function(req, res){
+      $.ajax({
+        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
+        function(data){
+          res(data);
+        }
+      }).then(function(results){
+        store.autoFill = results.response;
+        console.log(store.autoFill.length);
+      })
+    },
+    minLength:3
+  });
 });
 
 app.controller("ResultsController", ['$http','$routeParams', 'Locations', function($http, $routeParams, Locations){
@@ -127,22 +143,3 @@ app.factory('Locations', ['$http', function($http){
 
   }
 }]);
-
-
-// jQuery Shit
-$( '#beer1').autocomplete({
-    source: function (request, response) {
-        $.ajax({
-            type: 'GET',
-            url:  `http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete`,
-            dataType: "json",
-            data: {
-              q: request.term
-            },
-            success: function (data) {
-                console.log(data);
-                response(data);
-            }
-        });
-    }
-});
