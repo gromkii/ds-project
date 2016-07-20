@@ -24,8 +24,6 @@ app.config(($routeProvider,$locationProvider, $httpProvider) => {
       enabled: true,
       requireBase: false
     });
-
-    $httpProvider.defaults.useXDomain
 })
 
 app.directive('navbar',['Locations', function(Locations){

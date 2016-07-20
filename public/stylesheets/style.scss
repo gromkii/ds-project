@@ -43,6 +43,7 @@ $landing-font: 'Cormorant SC', serif;
 body {
   background-image:url('/images/landing.jpg');
   background-size:cover;
+  background-attachment:fixed;
   nav {
     .navbar-brand {
       font-family: $landing-font;
@@ -110,6 +111,7 @@ body {
       .rating {
         color:$color2;
       }
+
     }
 
 
@@ -144,14 +146,21 @@ body {
 }
 
 
-.ui-menu {
-  background-color: #fff;
+.ui-autocomplete {
+  background-color: white;
   color: $color3;
-  border-radius: 5px;
-  border: 1px solid $color5;
-  width: 30%;
+  list-style: none;
+
+  .ui-menu-item {
+    &:hover {
+      background-color:$color5;
+      color:$color2;
+    }
+  }
 }
 
-.ui-menu-item a {
-  text-decoration: none;
+canvas {
+  .mapboxgl-canvas {
+    position:static;
+  }
 }

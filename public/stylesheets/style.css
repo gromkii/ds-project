@@ -13,7 +13,8 @@
 
 body {
   background-image: url("/images/landing.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed; }
   body nav .navbar-brand {
     font-family: "Cormorant SC", serif;
     font-size: 1.5em; }
@@ -78,14 +79,15 @@ body {
     left: 12px;
     animation-delay: 500ms; }
 
-.ui-menu {
-  background-color: #fff;
+.ui-autocomplete {
+  background-color: white;
   color: #494331;
-  border-radius: 5px;
-  border: 1px solid #de541e;
-  width: 30%; }
+  list-style: none; }
+  .ui-autocomplete .ui-menu-item:hover {
+    background-color: #de541e;
+    color: #d6d6b1; }
 
-.ui-menu-item a {
-  text-decoration: none; }
+canvas .mapboxgl-canvas {
+  position: static; }
 
 /*# sourceMappingURL=style.css.map */
