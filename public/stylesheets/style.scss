@@ -12,12 +12,10 @@ $color1: rgba(63, 63, 55, 1);
 $color2: rgba(214, 214, 177, 1);
 $color3: rgba(73, 67, 49, 1);
 $color4: rgba(135, 132, 114, 1);
-$color7: rgba(135, 132, 114, .5);
-$color8: rgba(135, 132, 114, .75);
 $color5: rgba(222, 84, 30, 1);
 $color6: rgba(214, 214, 177, 0);
-// $color7: rgba(214, 214, 177, .5);
-// $color8: rgba(214, 214, 177, .75);
+$color7: rgba(135, 132, 114, .5);
+$color8: rgba(135, 132, 114, .75);
 
 /* Spinner */
 $base-line-height: 24px;
@@ -143,4 +141,17 @@ body {
     left: ($base-line-height / 2);
     animation-delay: ($pulse-duration / 1.5);
   }
+}
+
+
+.ui-menu {
+  background-color: #fff;
+  color: $color3;
+  border-radius: 5px;
+  border: 1px solid $color5;
+  width: 30%;
+}
+
+.ui-menu-item a {
+  text-decoration: none;
 }

@@ -78,4 +78,14 @@ body {
     left: 12px;
     animation-delay: 500ms; }
 
+.ui-menu {
+  background-color: #fff;
+  color: #494331;
+  border-radius: 5px;
+  border: 1px solid #de541e;
+  width: 30%; }
+
+.ui-menu-item a {
+  text-decoration: none; }
+
 /*# sourceMappingURL=style.css.map */

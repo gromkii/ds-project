@@ -3,19 +3,16 @@
 
   <form class="col-md-4 col-md-offset-4" action="/results" ng-model="form" role="search">
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Search by City" name="city">
+      <input type="text" class="form-control" placeholder="Search by City" name="city" required>
     </fieldset>
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Beer 1" name="beer1" id="beer1" value="test" ng-model="beer1">
-      <div class="panel-footer" ng-repeat="beer in search.autoFill.beers | limitTo:10">
-        {{ beer }}
-      </div>
+      <input type="text" class="form-control" placeholder="Select a Beer" name="beer1" id="beer1" required>
     </fieldset>
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Beer 2" name="beer2" id="beer2">
+      <input type="text" class="form-control" placeholder="Select a Beer" name="beer2" id="beer2" required>
     </fieldset>
     <fieldset class="form-group">
-      <input type="text" class="form-control" placeholder="Beer 3" name="beer3" id="beer3">
+      <input type="text" class="form-control" placeholder="Select a Beer" name="beer3" id="beer3" required>
     </fieldset>
 
     <button type="submit" class="btn btn-lg btn-primary">Search</button>
