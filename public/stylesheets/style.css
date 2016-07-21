@@ -89,12 +89,4 @@ body {
     background-color: #de541e;
     color: #d6d6b1; }
 
-canvas {
-  position: static; }
-  canvas:first-child {
-    position: static; }
-
-.static-canvas {
-  position: static; }
-
 /*# sourceMappingURL=style.css.map */

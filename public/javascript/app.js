@@ -68,7 +68,7 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
       if (results.brewery_results){
         store.found = true;
         store.data = results.brewery_results;
-        Locations.showMap(store.data[0].location.lon, store.data[0].location.lat);
+        Locations.showMap(store.data[0].location.lon, store.data[0].location.lat, store.data);
       } else {
         this.found = false;
       }
@@ -113,26 +113,28 @@ app.factory('Locations', ['$http', function($http){
         url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
       });
     },
-    showMap:function(longi, lati){
+    showMap:function(longi, lati, resultsArray){
       mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
 
       var map = new mapboxgl.Map({
           container: 'map',
           style: 'mapbox://styles/mapbox/basic-v9',
           zoom: 13,
-          center: [longi, lati]
+          center: [longi, lati],
+          attributionControl:true
       });
 
+      resultsArray.forEach(element=>{
+        var marker = new mapboxgl.Marker()
+          .setLngLat([element.location.lon, element.location.lat])
+          .addTo(map);
 
-      map.addClass('static-canvas');
+        console.log(marker);
+      })
+
+      console.log(map);
+
       return map;
-    },
-    showPoints:function(resultsArray){
-      // Loop through resultsArray
-        // Use each longitutde and latitude to make a new point on the map.
-
-      // Return the collection of points to place.
     }
-
   }
 }]);

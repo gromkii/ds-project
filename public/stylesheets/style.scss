@@ -160,14 +160,3 @@ body {
     }
   }
 }
-
-canvas {
-  position:static;
-  &:first-child{
-    position:static;
-  }
-}
-
-.static-canvas {
-  position:static;
-}
