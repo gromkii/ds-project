@@ -1,11 +1,17 @@
 
 <main class="row">
+
+  <section class="col-md-6" ng-show="results.data.length">
+    <div id="map"></div>
+  </section>
+
   <section class="col-md-6" ng-show="results.data.length && results.found">
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
-      <div>
+      <div ng-click="results.flyTo(brew.long, brew.lat)">
         <h2>{{ brew.name }}</h2>
         <h2>{{ brew.brewery}}</h2>
         <h4>{{ brew.phone }}</h4>
+        <h4>{{ brew.long | number:2}}, {{ brew.lat | number:2}}</h4>
 
         <p> {{ brew.description }} </p>
 
@@ -15,11 +21,11 @@
             <ul>
               <li ng-repeat="beer in brew.beers">
                 <h5 ng-click="expand(brew.beers)">{{ beer.beer_name }}</h5>
-                  <ul>
-                    <li>Style:{{ beer.style }}</li>
-                    <li>Category: {{ beer.category }}</li>
-                    <li>ABV: {{ beer.abv }}%</li>
-                    <li>IBUS: {{ beer.ibus }}</li>
+                <ul>
+                  <li>Style:{{ beer.style }}</li>
+                  <li>Category: {{ beer.category }}</li>
+                  <li>ABV: {{ beer.abv }}%</li>
+                  <li>IBUS: {{ beer.ibus }}</li>
                 </ul>
               </li>
             </ul>
@@ -35,9 +41,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="col-md-6" ng-show="results.data.length" id="map" class="mapping">
   </section>
 
   <section ng-hide="results.found">

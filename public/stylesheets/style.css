@@ -44,7 +44,7 @@ body {
     body section .brewery {
       margin-top: 15px;
       padding: 5px 10px;
-      background-color: rgba(135, 132, 114, 0.5);
+      background-color: rgba(135, 132, 114, 0.6);
       text-align: left;
       margin-bottom: 5px;
       border-radius: 3px;
@@ -52,7 +52,7 @@ body {
       color: #d6d6b1;
       overflow: scroll; }
       body section .brewery:hover {
-        background-color: rgba(135, 132, 114, 0.75); }
+        background-color: rgba(135, 132, 114, 0.8); }
       body section .brewery .rating {
         color: #d6d6b1; }
 
@@ -88,5 +88,22 @@ body {
   .ui-autocomplete .ui-menu-item:hover {
     background-color: #de541e;
     color: #d6d6b1; }
+
+.static {
+  position: static;
+  width: 100%; }
+
+#map {
+  position: static;
+  height: 100%;
+  width: 100%;
+  .marker-height: 10px;
+  .marker-width: 10px;
+  .marker-background-color: #de541e;
+  .marker-border-radius: 100%; }
+  #map canvas {
+    position: absolute;
+    top: 0;
+    left: 0; }
 
 /*# sourceMappingURL=style.css.map */

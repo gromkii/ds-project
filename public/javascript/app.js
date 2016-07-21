@@ -61,6 +61,9 @@ app.controller("SearchFormController", function(){
 app.controller("ResultsController", ['$http','$routeParams', 'Locations', function($http, $routeParams, Locations){
   var store = this;
   this.found = true;
+  this.flyTo = function(long, lat){
+    map.flyTo({center:[long,lat]})
+  }
 
   if (!$routeParams.beer1){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
@@ -68,22 +71,44 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
       if (results.brewery_results){
         store.found = true;
         store.data = results.brewery_results;
-        Locations.showMap(store.data[0].location.lon, store.data[0].location.lat, store.data);
+        var map = Locations.showMap(store.data[0].location.lon, store.data[0].location.lat);
+        map.on('load', function(){
+          map.resize();
+
+        })
       } else {
         this.found = false;
       }
     });
   } else if ($routeParams.beer1){
     Locations.locationAndBeer($routeParams).success(function(results){
-      console.log(results.response);
       if (results.response){
         store.data = results.response;
-        console.log(store.data.length);
-        Locations.showMap(store.data[0].long, store.data[0].lat);
+
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/basic-v9',
+            zoom: 13,
+            center: [store.data[0].long, store.data[0].lat]
+        });
+
+        map.on('load', function(){
+          map.resize();
+
+          store.data.forEach(function(element){
+            var marker = new mapboxgl.Marker()
+              .setLngLat([element.long,element.lat])
+              .addTo(map);
+          })
+        })
+
       } else {
         this.found = false;
       }
-    });
+    })
   }
 
   this.expand = function(brew){
@@ -113,26 +138,15 @@ app.factory('Locations', ['$http', function($http){
         url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
       });
     },
-    showMap:function(longi, lati, resultsArray){
+    showMap:function(longi, lati){
       mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
 
       var map = new mapboxgl.Map({
           container: 'map',
           style: 'mapbox://styles/mapbox/basic-v9',
           zoom: 13,
-          center: [longi, lati],
-          attributionControl:true
+          center: [longi, lati]
       });
-
-      resultsArray.forEach(element=>{
-        var marker = new mapboxgl.Marker()
-          .setLngLat([element.location.lon, element.location.lat])
-          .addTo(map);
-
-        console.log(marker);
-      })
-
-      console.log(map);
 
       return map;
     }
