@@ -61,9 +61,6 @@ app.controller("SearchFormController", function(){
 app.controller("ResultsController", ['$http','$routeParams', 'Locations', function($http, $routeParams, Locations){
   var store = this;
   this.found = true;
-  this.flyTo = function(long, lat){
-    map.flyTo({center:[long,lat]})
-  }
 
   if (!$routeParams.beer1){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
@@ -104,6 +101,10 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
               .addTo(map);
           })
         })
+
+        store.flyTo = function(longi,lati){
+          map.flyTo({center:[longi,lati]});
+        }
 
       } else {
         this.found = false;
