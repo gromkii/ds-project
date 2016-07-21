@@ -150,6 +150,8 @@ body {
   background-color: white;
   color: $color3;
   list-style: none;
+  width:30%;
+  padding-left:-1em;
 
   .ui-menu-item {
     &:hover {
@@ -160,7 +162,12 @@ body {
 }
 
 canvas {
-  .mapboxgl-canvas {
+  position:static;
+  &:first-child{
     position:static;
   }
+}
+
+.static-canvas {
+  position:static;
 }

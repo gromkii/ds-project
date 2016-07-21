@@ -123,6 +123,8 @@ app.factory('Locations', ['$http', function($http){
           center: [longi, lati]
       });
 
+
+      map.addClass('static-canvas');
       return map;
     },
     showPoints:function(resultsArray){

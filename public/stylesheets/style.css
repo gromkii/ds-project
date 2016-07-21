@@ -82,12 +82,19 @@ body {
 .ui-autocomplete {
   background-color: white;
   color: #494331;
-  list-style: none; }
+  list-style: none;
+  width: 30%;
+  padding-left: -1em; }
   .ui-autocomplete .ui-menu-item:hover {
     background-color: #de541e;
     color: #d6d6b1; }
 
-canvas .mapboxgl-canvas {
+canvas {
+  position: static; }
+  canvas:first-child {
+    position: static; }
+
+.static-canvas {
   position: static; }
 
 /*# sourceMappingURL=style.css.map */
