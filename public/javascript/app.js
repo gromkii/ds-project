@@ -68,11 +68,26 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
       if (results.brewery_results){
         store.found = true;
         store.data = results.brewery_results;
-        var map = Locations.showMap(store, store.data[0].location.lon, store.data[0].location.lat,'location.long','location.lat');
+
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/basic-v9',
+            zoom: 13,
+            center: [store.data[0].location.lon, store.data[0].location.lat]
+        });
+
         map.on('load', function(){
           map.resize();
 
+          store.data.forEach(function(element,index){
+            var marker = new mapboxgl.Marker()
+              .setLngLat([element.location.lon,element.location.lat])
+              .addTo(map);
+          })
         })
+
       } else {
         this.found = false;
       }
@@ -81,31 +96,7 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
     Locations.locationAndBeer($routeParams).success(function(results){
       if (results.response){
         store.data = results.response;
-        var map = Locations.showMap(store, store.data[0].long,store.data[0].lat,'long','lat')
-
-        // mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
-        //
-        // var map = new mapboxgl.Map({
-        //     container: 'map',
-        //     style: 'mapbox://styles/mapbox/basic-v9',
-        //     zoom: 13,
-        //     center: [originLong, originLat]
-        // });
-        //
-        // map.on('load', function(){
-        //   map.resize();
-        //
-        //   store.data.forEach(function(element){
-        //     var marker = new mapboxgl.Marker()
-        //       .setLngLat([markerLong,markerLat])
-        //       .addTo(map);
-        //   })
-        // })
-        //
-        // store.flyTo = function(longi,lati){
-        //   map.flyTo({center:[longi,lati]});
-        // }
-
+        var map = Locations.showMap(store, store.data[0].long,store.data[0].lat,'long','lat');
       } else {
         this.found = false;
       }
