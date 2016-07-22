@@ -5,7 +5,7 @@
 @keyframes pulse {
   50% {
     background: #d6d6b1; } }
-.title-text, section .brewery h2 {
+.title-text, .brewery h2 {
   color: #d6d6b1;
   font-family: "Cormorant SC", serif;
   letter-spacing: 1.25px;
@@ -39,7 +39,9 @@ section .search-form {
   flex-direction: column;
   justify-content: center;
   form-margin-top: 20px; }
-section .brewery {
+
+.brewery {
+  overflow: inheritgit status;
   margin-top: 15px;
   padding: 5px 10px;
   background-color: rgba(135, 132, 114, 0.6);
@@ -47,11 +49,10 @@ section .brewery {
   margin-bottom: 5px;
   border-radius: 3px;
   transition: all 500ms ease;
-  color: #d6d6b1;
-  overflow: scroll; }
-  section .brewery:hover {
+  color: #d6d6b1; }
+  .brewery:hover {
     background-color: rgba(135, 132, 114, 0.8); }
-  section .brewery .rating {
+  .brewery .rating {
     color: #d6d6b1; }
 
 .loading-pulse {

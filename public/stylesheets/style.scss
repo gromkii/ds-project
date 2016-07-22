@@ -88,33 +88,34 @@ section {
       margin-top:20px;
     }
   }
-  .brewery {
-    margin-top:15px;
-    padding:5px 10px;
-    background-color:$color7;
-    text-align:left;
-    margin-bottom:5px;
-    border-radius:3px;
-    transition: all 500ms ease;
-    color:$color2;
-    overflow: scroll;
 
 
-    h2 {
-      @extend .title-text;
-    }
 
-    &:hover {
+}
 
-      background-color:$color8;
-    }
+.brewery {
+  overflow: inheritgit status;
+  margin-top:15px;
+  padding:5px 10px;
+  background-color:$color7;
+  text-align:left;
+  margin-bottom:5px;
+  border-radius:3px;
+  transition: all 500ms ease;
+  color:$color2;
 
-    .rating {
-      color:$color2;
-    }
-
+  h2 {
+    @extend .title-text;
   }
 
+  &:hover {
+
+    background-color:$color8;
+  }
+
+  .rating {
+    color:$color2;
+  }
 
 }
 
