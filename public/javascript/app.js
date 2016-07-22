@@ -59,7 +59,7 @@ app.controller("SearchFormController", function(){
   $('#beer1,#beer2,#beer3').autocomplete({
     source: function(req, res){
       $.getJSON({
-        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
+        url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
         success: function(results){
           store.autoFill.beers = results.response;
           res(results.response);
@@ -148,13 +148,13 @@ app.factory('Locations', ['$http', function($http){
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept"
         },
-        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
+        url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/location_only_recommendation?city%2Cstate=${zipCode}`
       });
     },
     locationAndBeer: function(form){
       return $http({
         method:'GET',
-        url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
+        url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
       })
     },
     showMap:function(store, originLong, originLat,markerLong, markerLat){
