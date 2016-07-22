@@ -94,7 +94,7 @@ section {
 }
 
 .brewery {
-  overflow: inheritgit status;
+  overflow: auto;
   margin-top:15px;
   padding:5px 10px;
   background-color:$color7;
@@ -168,7 +168,7 @@ section {
 
 
   .results-page{
-    overflow:scroll;
+    overflow:auto;
     height:90vh;
   }
   .results-map{
