@@ -33,12 +33,17 @@
           </div>
         </div>
 
-        <div ng-hide="brew.rating.overall === '0' || !brew.rating">
-          <h5 >Overall: <span class="rating">{{ brew.rating.overall | number:2}}</span></h5>
-          <h5 >Atmosphere: <span class="rating">{{ brew.rating.atmosphere | number:2}}</span></h5>
-          <h5 >Selection: <span class="rating">{{ brew.rating.selection | number:2}}</span></h5>
-          <h5 >Service: <span class="rating">{{ brew.rating.service | number:2}}</span></h5>
-          <h5 >Food: <span class="rating">{{ brew.rating.food | number:2}}</span></h5>
+        <div ng-hide="brew.rating.overall === '0' || !brew.rating" ng-init="brew.showRatings = false">
+          <h4 ng-click="brew.showRatings = !brew.showRatings">Overall:
+            <span class="rating">{{ brew.rating.overall | number:2}}</span>
+            <span ng-hide="brew.showRatings"><em style="font-size:.5em">show more</em></span>
+          </h4>
+          <ul ng-show="brew.showRatings">
+            <li>Atmosphere: <span class="rating">{{ brew.rating.atmosphere | number:2}}</span></li>
+            <li>Selection: <span class="rating">{{ brew.rating.selection | number:2}}</span></li>
+            <li>Service: <span class="rating">{{ brew.rating.service | number:2}}</span></li>
+            <li>Food: <span class="rating">{{ brew.rating.food | number:2}}</span></li>
+          </ul>
         </div>
       </div>
     </div>
