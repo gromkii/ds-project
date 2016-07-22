@@ -34,8 +34,7 @@ body {
         text-shadow: 3px 3px 3px #494331;
         margin-bottom: 20px; }
   body section {
-    height: 90vh;
-    overflow: scroll; }
+    height: 90vh; }
     body section .search-form {
       display: flex;
       flex-direction: column;

@@ -5,7 +5,7 @@
     <div id="map"></div>
   </section>
 
-  <section class="col-md-6" ng-show="results.data.length && results.found">
+  <section class="col-md-6 brew-list" ng-show="results.data.length && results.found">
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
       <div>
         <h2 ng-click="results.flyTo(brew.location.lon, brew.location.lat)" ng-show="brew.name">{{ brew.name }}</h2>
