@@ -7,20 +7,22 @@
 
   <section class="col-md-6" ng-show="results.data.length && results.found">
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
-      <div ng-click="results.flyTo(brew.long, brew.lat)">
-        <h2>{{ brew.name }}</h2>
-        <h2>{{ brew.brewery}}</h2>
+      <div>
+        <h2 ng-click="results.flyTo(brew.location.lon, brew.location.lat)" ng-show="brew.name">{{ brew.name }}</h2>
+        <h2 ng-click="results.flyTo(brew.long, brew.lat)" ng-show="brew.brewery">{{ brew.brewery}}</h2>
         <h4>{{ brew.phone }}</h4>
 
         <p> {{ brew.description }} </p>
 
         <div ng-show="brew.beers.length">
           <div class="col-md-12">
-            <h4>Beers</h4>
-            <ul>
+            <h4 ng-click="brew.showBeers = !brew.showBeers" ng-init='brew.showBeers = false'>
+              Beers <span ng-hide="brew.showBeers"> [{{ brew.beers.length }}] </span>
+            </h4>
+            <ul ng-show="brew.showBeers">
               <li ng-repeat="beer in brew.beers">
-                <h5 ng-click="expand(brew.beers)">{{ beer.beer_name }}</h5>
-                <ul>
+                <h5 ng-click="beer.showInfo = !beer.showInfo" ng-init='beer.showInfo = false'>{{ beer.beer_name }}</h5>
+                <ul ng-show="beer.showInfo">
                   <li>Style:{{ beer.style }}</li>
                   <li>Category: {{ beer.category }}</li>
                   <li>ABV: {{ beer.abv }}%</li>

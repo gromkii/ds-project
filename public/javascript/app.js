@@ -86,6 +86,11 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
               .setLngLat([element.location.lon,element.location.lat])
               .addTo(map);
           })
+
+          store.flyTo = function(longi,lati){
+            console.log(longi, lati);
+            map.flyTo({center:[longi,lati], zoom:13});
+          }
         })
 
       } else {
@@ -145,12 +150,13 @@ app.factory('Locations', ['$http', function($http){
 
         store.data.forEach(function(element,index){
           var marker = new mapboxgl.Marker()
-            .setLngLat([store.data[index][markerLong],store.data[index][markerLat]])
+            .setLngLat([element[markerLong],element[markerLat]])
             .addTo(map);
         })
       })
 
       store.flyTo = function(longi,lati){
+        console.log(longi, lati);
         map.flyTo({center:[longi,lati], zoom:13});
       }
     }
