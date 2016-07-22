@@ -76,48 +76,46 @@ body {
 
   }
 
-  section {
 
-    height:90vh;
+}
 
-
-    .search-form {
-      display:flex;
-      flex-direction:column;
-      justify-content: center;
-      form:{
-        margin-top:20px;
-      }
+section {
+  .search-form {
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    form:{
+      margin-top:20px;
     }
-    .brewery {
-      margin-top:15px;
-      padding:5px 10px;
-      background-color:$color7;
-      text-align:left;
-      margin-bottom:5px;
-      border-radius:3px;
-      transition: all 500ms ease;
+  }
+  .brewery {
+    margin-top:15px;
+    padding:5px 10px;
+    background-color:$color7;
+    text-align:left;
+    margin-bottom:5px;
+    border-radius:3px;
+    transition: all 500ms ease;
+    color:$color2;
+    overflow: scroll;
+
+
+    h2 {
+      @extend .title-text;
+    }
+
+    &:hover {
+
+      background-color:$color8;
+    }
+
+    .rating {
       color:$color2;
-      overflow: scroll;
-
-
-      h2 {
-        @extend .title-text;
-      }
-
-      &:hover {
-
-        background-color:$color8;
-      }
-
-      .rating {
-        color:$color2;
-      }
-
     }
-
 
   }
+
+
 }
 
 .loading-pulse {
@@ -163,10 +161,19 @@ body {
   }
 }
 
-.static{
-  position:static;
-  width:100%;
+.bk-plot-wrapper table{
+  margin:0 auto;
 }
+
+
+  .results-page{
+    overflow:scroll;
+    height:90vh;
+  }
+  .results-map{
+    overflow:hidden;
+  }
+
 
 #map{
   position: static;
@@ -176,20 +183,16 @@ body {
     position:absolute;
     top:0;
     left:0;
+    overflow:hidden !important;
+
   }
   .mapboxgl-marker{
     height:10px;
     width:10px;
     // border-radius:50%;
     border-left: 10px solid transparent;
-  	border-right: 10px solid transparent;
-  	border-top: 40px solid $color5;
+    border-right: 10px solid transparent;
+    border-top: 40px solid $color5;
     // background-color:$color5;
-
   }
-
-}
-
-.bk-plot-wrapper table{
-  margin:0 auto;
 }
