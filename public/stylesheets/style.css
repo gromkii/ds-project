@@ -114,4 +114,7 @@ section .search-form {
     border-right: 10px solid transparent;
     border-top: 40px solid #de541e; }
 
+.ui-helper-hidden-accessible {
+  display: hidden; }
+
 /*# sourceMappingURL=style.css.map */
