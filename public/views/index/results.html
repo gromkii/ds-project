@@ -55,7 +55,7 @@
     <a href="/search" class="btn btn-lg btn-primary">Try again?</a>
   </section>
 
-  <section ng-hide="results.data.length">
+  <section ng-hide="results.data.length || results.hasError">
     <h1>Searching... hang tight for a sec!</h1>
   </section>
 </main>

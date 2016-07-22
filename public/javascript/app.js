@@ -18,6 +18,18 @@ app.config(($routeProvider,$locationProvider, $httpProvider) => {
       templateUrl:'/views/index/results.html',
       controller:'ResultsController',
       controllerAs:'results'
+    })
+
+    .when('/breweries', {
+      templateUrl:'/views/maps/state_heat_map.html',
+      controller:'HeatmapController',
+      controllerAs:'heatmap'
+    })
+
+    .when('/breweries2', {
+      templateUrl:'/views/maps/foo.html',
+      controller:'DensityMapController',
+      controllerAs:'densityMap'
     });
 
     $locationProvider.html5Mode({
@@ -65,10 +77,10 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
   if (!$routeParams.beer1){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
+      console.log(results);
       if (results.brewery_results){
         store.found = true;
         store.data = results.brewery_results;
-
         mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
 
         var map = new mapboxgl.Map({
@@ -88,14 +100,14 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
           })
 
           store.flyTo = function(longi,lati){
-            console.log(longi, lati);
+            (longi, lati);
             map.flyTo({center:[longi,lati], zoom:13});
           }
         })
-
-      } else {
-        this.found = false;
       }
+
+    }).catch(function(error){
+      store.found = false;
     });
   } else if ($routeParams.beer1){
     Locations.locationAndBeer($routeParams).success(function(results){
@@ -103,9 +115,11 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
         store.data = results.response;
         var map = Locations.showMap(store, store.data[0].long,store.data[0].lat,'long','lat');
       } else {
-        this.found = false;
+        store.found = false;
       }
-    })
+    }).catch(function(error){
+      store.found = false;
+    });
   }
 
   this.expand = function(brew){
@@ -116,6 +130,14 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
     }
   }
 }]);
+
+app.controller("HeatmapController", function(){
+  // Ta-da
+})
+
+app.controller('DensityMapController', function(){
+  // Do the thing.
+})
 
 app.factory('Locations', ['$http', function($http){
   return {
@@ -133,7 +155,7 @@ app.factory('Locations', ['$http', function($http){
       return $http({
         method:'GET',
         url:`http://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
-      });
+      })
     },
     showMap:function(store, originLong, originLat,markerLong, markerLat){
       mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
@@ -156,7 +178,6 @@ app.factory('Locations', ['$http', function($http){
       })
 
       store.flyTo = function(longi,lati){
-        console.log(longi, lati);
         map.flyTo({center:[longi,lati], zoom:13});
       }
     }

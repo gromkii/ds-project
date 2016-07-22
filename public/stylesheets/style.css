@@ -108,4 +108,7 @@ body {
     border-right: 10px solid transparent;
     border-top: 40px solid #de541e; }
 
+.bk-plot-wrapper table {
+  margin: 0 auto; }
+
 /*# sourceMappingURL=style.css.map */
