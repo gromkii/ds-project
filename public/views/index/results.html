@@ -7,11 +7,10 @@
 
   <section class="col-md-6 results-page" ng-show="results.data.length && results.found">
     <div class="brewery" ng-repeat="brew in results.data | limitTo:20">
-      
-        <h2 ng-click="results.flyTo(brew.location.lon, brew.location.lat)" ng-show="brew.name">{{ brew.name }}</h2>
-        <h2 ng-click="results.flyTo(brew.long, brew.lat)" ng-show="brew.brewery">{{ brew.brewery}}</h2>
-        <h4>{{ brew.phone }}</h4>
 
+        <h2 ng-click="results.flyTo(brew.location.lon, brew.location.lat, results.data.indexOf(brew))" ng-show="brew.name">{{ brew.name }}</h2>
+        <h2 ng-click="results.flyTo(brew.long, brew.lat, results.data.indexOf(brew))" ng-show="brew.brewery">{{ brew.brewery}}</h2>
+        <h4>{{ brew.phone }}</h4>
         <p> {{ brew.description }} </p>
 
         <div ng-show="brew.beers.length">

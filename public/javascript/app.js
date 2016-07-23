@@ -77,7 +77,6 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
   if (!$routeParams.beer1){
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
-      console.log(results);
       if (results.brewery_results){
         store.found = true;
         store.data = results.brewery_results;
@@ -97,12 +96,16 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
             var marker = new mapboxgl.Marker()
               .setLngLat([element.location.lon,element.location.lat])
               .addTo(map);
+              $(marker._el).attr('id',index).addClass('brew-marker');
           })
 
-          store.flyTo = function(longi,lati){
-            (longi, lati);
+          store.flyTo = function(longi,lati,getDiv){
             map.flyTo({center:[longi,lati], zoom:13});
+            $('.brew-marker').css('border-top', '40px solid #de541e')
+            $(`#${getDiv}`).css('border-top','40px solid #3f3f37');
+
           }
+
         })
       }
 
@@ -128,6 +131,10 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
     } else {
       brew.collapse = true;
     }
+  }
+
+  this.getMarker = function(getDiv) {
+
   }
 }]);
 
@@ -174,11 +181,15 @@ app.factory('Locations', ['$http', function($http){
           var marker = new mapboxgl.Marker()
             .setLngLat([element[markerLong],element[markerLat]])
             .addTo(map);
+            $(marker._el).attr('id',index).addClass('brew-marker');
         })
       })
 
-      store.flyTo = function(longi,lati){
+      store.flyTo = function(longi,lati,getDiv){
         map.flyTo({center:[longi,lati], zoom:13});
+        console.log(getDiv);
+        $('.brew-marker').css('border-top', '40px solid #de541e')
+        $(`#${getDiv}`).css('border-top','40px solid #3f3f37');
       }
     }
   }

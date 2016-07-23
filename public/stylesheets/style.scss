@@ -111,7 +111,6 @@ section {
   }
 
   &:hover {
-
     background-color:$color8;
   }
 
@@ -167,14 +166,11 @@ section {
   .mapboxgl-marker{
     height:10px;
     width:10px;
-    // border-radius:50%;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 40px solid $color5;
-    // background-color:$color5;
   }
 }
-
 
 .ui-helper-hidden-accessible {
   display:hidden;
