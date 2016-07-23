@@ -17,11 +17,13 @@
         <div ng-show="brew.beers.length">
           <div class="col-md-12">
             <h4 ng-click="brew.showBeers = !brew.showBeers" ng-init='brew.showBeers = false'>
-              Beers <span ng-hide="brew.showBeers"> [{{ brew.beers.length }}] </span>
+              Beers <span ng-hide="brew.showBeers"> [{{ brew.beers.length }}] <em style="font-size:.5em">Show More...</em> </span>
             </h4>
             <ul ng-show="brew.showBeers">
               <li ng-repeat="beer in brew.beers">
-                <h5 ng-click="beer.showInfo = !beer.showInfo" ng-init='beer.showInfo = false'>{{ beer.beer_name }}</h5>
+                <h5 ng-click="beer.showInfo = !beer.showInfo" ng-init='beer.showInfo = false'>{{ beer.beer_name }}
+                <em style="font-size:.5em">Show More...</em>
+                </h5>
                 <ul ng-show="beer.showInfo">
                   <li>Style:{{ beer.style }}</li>
                   <li>Category: {{ beer.category }}</li>
@@ -36,7 +38,7 @@
         <div ng-hide="brew.rating.overall === '0' || !brew.rating" ng-init="brew.showRatings = false">
           <h4 ng-click="brew.showRatings = !brew.showRatings">Overall:
             <span class="rating">{{ brew.rating.overall | number:2}}</span>
-            <span ng-hide="brew.showRatings"><em style="font-size:.5em">show more</em></span>
+            <span ng-hide="brew.showRatings"><em style="font-size:.5em">Show More...</em></span>
           </h4>
           <ul ng-show="brew.showRatings">
             <li>Atmosphere: <span class="rating">{{ brew.rating.atmosphere | number:2}}</span></li>
