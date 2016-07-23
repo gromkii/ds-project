@@ -61,8 +61,7 @@ section .search-form {
   background-color: white;
   color: #494331;
   list-style: none;
-  width: 30%;
-  padding-left: -1em; }
+  width: 30%; }
   .ui-autocomplete .ui-menu-item:hover {
     background-color: #de541e;
     color: #d6d6b1; }
