@@ -49,7 +49,7 @@ app.directive('navbar',['Locations', function(Locations){
 }]);
 
 app.controller("IndexController", function(){
-  this.greeting = "Connection test.";
+
 });
 
 app.controller("SearchFormController", function(){
@@ -78,35 +78,39 @@ app.controller("ResultsController", ['$http','$routeParams', 'Locations', functi
     // TODO: make this call without using cors-anywhere. It's hacky and bad.
     Locations.locationOnly($routeParams.locationOnly).success(function(results){
       if (results.brewery_results){
-        store.found = true;
-        store.data = results.brewery_results;
-        mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
+        if (!results.brewery_results[0].name){
+          store.found = false
+        } else {
+          store.found = true;
+          store.data = results.brewery_results;
+          mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JvbWtpaSIsImEiOiJjaXFzYjNkMmswMnN5ZnlubnY3dzhxNnhxIn0.20bB0tw4QqbThJkaDj4Dxg';
 
-        var map = new mapboxgl.Map({
+          var map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/mapbox/basic-v9',
             zoom: 13,
             center: [store.data[0].location.lon, store.data[0].location.lat]
-        });
+          });
 
-        map.on('load', function(){
-          map.resize();
+          map.on('load', function(){
+            map.resize();
 
-          store.data.forEach(function(element,index){
-            var marker = new mapboxgl.Marker()
+            store.data.forEach(function(element,index){
+              var marker = new mapboxgl.Marker()
               .setLngLat([element.location.lon,element.location.lat])
               .addTo(map);
               $(marker._el).attr('id',index).addClass('brew-marker');
+            })
+
+            store.flyTo = function(longi,lati,getDiv){
+              map.flyTo({center:[longi,lati], zoom:13});
+              $('.brew-marker').css('border-top', '40px solid #de541e')
+              $(`#${getDiv}`).css('border-top','40px solid #3f3f37');
+
+            }
+
           })
-
-          store.flyTo = function(longi,lati,getDiv){
-            map.flyTo({center:[longi,lati], zoom:13});
-            $('.brew-marker').css('border-top', '40px solid #de541e')
-            $(`#${getDiv}`).css('border-top','40px solid #3f3f37');
-
-          }
-
-        })
+        }
       }
 
     }).catch(function(error){
