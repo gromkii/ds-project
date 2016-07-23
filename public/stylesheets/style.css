@@ -113,4 +113,7 @@ section .brewery {
     border-right: 10px solid transparent;
     border-top: 40px solid #de541e; }
 
+::-webkit-scrollbar {
+  display: none; }
+
 /*# sourceMappingURL=style.css.map */

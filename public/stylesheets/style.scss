@@ -196,3 +196,7 @@ section {
     // background-color:$color5;
   }
 }
+
+::-webkit-scrollbar{
+  display:none;
+}
