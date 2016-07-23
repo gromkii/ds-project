@@ -161,7 +161,7 @@ app.factory('Locations', ['$http', function($http){
     locationAndBeer: function(form){
       return $http({
         method:'GET',
-        url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B'${form.beer1}'%2C%20'${form.beer2}'%2C%20'${form.beer3}'%5D&location=${form.city}`
+        url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/make_recommendation?preferred_beers=%5B"${form.beer1}"%2C%20"${form.beer2}"%2C%20"${form.beer3}"%5D&location=${form.city}`
       })
     },
     showMap:function(store, originLong, originLat,markerLong, markerLat){
