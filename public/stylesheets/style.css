@@ -95,7 +95,7 @@ section .search-form {
     border-top: 40px solid #de541e; }
 
 .ui-helper-hidden-accessible {
-  display: hidden; }
+  display: none; }
 
 ::-webkit-scrollbar {
   display: none; }
