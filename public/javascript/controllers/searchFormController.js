@@ -12,7 +12,7 @@
     $('#beer1,#beer2,#beer3').autocomplete({
       source: function(req, res){
         $.getJSON({
-          url:`https://dax-cors-anywhere.herokuapp.com/http://ec2-54-235-57-99.compute-1.amazonaws.com:5000/v1.0.0/autocomplete?q=${req.term}`,
+          url:`https://dax-cors-anywhere.herokuapp.com/https://brew_hound.rhobota.com/v1.0.0/autocomplete?q=${req.term}`,
           success: function(results){
             store.autoFill.beers = results.response;
             res(results.response);
