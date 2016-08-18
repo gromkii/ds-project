@@ -125,12 +125,16 @@ section {
   background-color: white;
   color: $color3;
   list-style: none;
-  width:30%;
+  position:absolute;
+  padding:2px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 
   .ui-menu-item {
     &:hover {
       background-color:$color5;
-      color:$color2;
+      color:white;
+      border-radius:3px;
     }
   }
 }
@@ -150,18 +154,16 @@ section {
 
 
 #map{
-  position: static;
   height:100%;
   width:100%;
-  margin:0 auto;
-  canvas {
-    width:100%;
+
+  canvas{
+    overflow: hidden;
     position:absolute;
     top:0;
     left:0;
-    overflow:hidden;
-
   }
+
   .mapboxgl-marker{
     height:10px;
     width:10px;
