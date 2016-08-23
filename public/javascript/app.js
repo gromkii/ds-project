@@ -1,6 +1,6 @@
 (function(){
   angular
-    .module('brewApp', ['ngRoute','results','searchForm'])
+    .module('brewApp', ['ngRoute','results','searchForm','about'])
     .config(routeConfig);
 
     routeConfig.$inject = ['$routeProvider', '$locationProvider'];
